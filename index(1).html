@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ZAVKU — Próximamente</title>
+  <meta name="description" content="ZAVKU está en desarrollo. Infraestructura de pagos cripto para negocios.">
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;width:100%;height:100%;background:#050607}
+    body{overflow:hidden}
+    .coming-soon{width:100vw;height:100dvh;background:#050607}
+    .coming-soon picture{display:block;width:100%;height:100%}
+    .coming-soon img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      object-position:center;
+      background:#050607;
+    }
+    @media (max-width: 700px){
+      .coming-soon img{
+        object-fit:cover;
+        object-position:center top;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="coming-soon" aria-label="ZAVKU próximamente">
+    <picture>
+      <source media="(max-width:700px)" srcset="zavku-coming-soon-mobile.webp">
+      <img src="zavku-coming-soon-desktop.webp"
+           alt="ZAVKU está en desarrollo. Próximamente."
+           width="1536" height="1024">
+    </picture>
+  </main>
+</body>
+</html>
