@@ -1,0 +1,10 @@
+name: zavku-coming-soon
+static_sites:
+  - name: zavku-coming-soon
+    github:
+      repo: gerrodgon-dot/zavku-coming-soon
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    output_dir: /
+    index_document: index.html
