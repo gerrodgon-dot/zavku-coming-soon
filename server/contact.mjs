@@ -60,7 +60,7 @@ export function createContactHandler(options={}){
       const {errors,clean}=validateContact(data);
       if(Object.keys(errors).length)return send(422,{message:'Please check the highlighted fields.',errors});
       if(data.website)return send(400,{message:'Please check the form and try again.'});
-      if(!deliver)return send(503,{message:'Message delivery is currently unavailable. Your message has not been sent. Please check back soon.'});
+      if(!deliver)return send(409,{message:'Message delivery is currently unavailable. Your message has not been sent. Please check back soon.'});
       try{await deliver(clean);}catch{return send(502,{message:'Your message could not be sent. Please try again later.'});}
       return send(200,{message:'Thank you. Your message has been sent to ZAVKU.'});
     }catch{return send(400,{message:'Please check the form and try again.'});}
