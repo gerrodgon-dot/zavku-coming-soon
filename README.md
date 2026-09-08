@@ -13,18 +13,16 @@ The existing HTML/CSS architecture is retained; TypeScript checks JavaScript wit
 
 Existing app: `seahorse-app` / `d0c6c6f4-2ea8-4bb8-be4c-27559f052225`, region `atl`.
 Existing static component: `zavku-coming-soon`, source `/site`, domain `zavku.com`.
-New approved service: `zavku-contact`, 1 shared CPU, 512 MiB, USD 5/month base price; Dockerfile.contact, `/api` ingress. Existing app settings and domain are preserved in `.do/app.yaml`.
+Existing service: `zavku-contact`, 1 shared CPU, 512 MiB, USD 5/month base price; Dockerfile.contact, `/api` ingress. Existing app settings and domain are preserved in `.do/app.yaml`.
 Do not create another app, repo, database, bucket or Droplet. Do not deploy this repository root as static files: it contains server code and project documentation.
 
-## Contact delivery — pending
+## Contact
 
-No corporate destination or SMTP credentials were supplied or found in the existing app-level configuration. Delivery is explicitly disabled. Valid requests return HTTP 409 with an honest user message. Invalid submissions return 422; abuse returns 429. A success response is possible only after an SMTP server accepts the mail.
+The institutional Contact section links directly to mailto:contact@zavku.com. There is no contact form, message submission API, SMTP dependency or transactional email configuration.
 
-To activate later, configure approved `CONTACT_TO`, `CONTACT_FROM`, `SMTP_HOST`, `SMTP_PORT` (465 or 587), `SMTP_USER`, `SMTP_PASSWORD` as service runtime settings, and set `CONTACT_DELIVERY_ENABLED=true`. Store secrets encrypted in hosting settings, never in Git. No mailbox or mail-provider account is created.
+The existing service entry point retains only health responses so infrastructure and deployment definitions remain intact. Its old contact routes return 404. Existing deployed environment settings are not changed by this local source correction and are no longer read by the code.
 
-Before activation, update isolated `site/privacy/index.html` and `site/terms/index.html` for actual responsible entity, address, privacy contact and retention practices. The supplied corporate legal name was conditional and remains unpublished pending confirmation. Current legal copy describes the actual disabled-delivery state.
-
-The contact process does not log or persist message bodies. IP hashes for abuse protection expire after 10 minutes. Rate limiting is in memory and appropriate only for the approved single instance; restarts reset it. App Platform's trusted `do-connecting-ip` header is used only when `TRUST_DO_INGRESS=true`. Do not trust that header on other deployments. Hosting operational logs are separate.
+Privacy and Terms are preserved as explicitly requested. This change has not been deployed.
 
 ## Approved assets
 
