@@ -19,10 +19,11 @@ export function validateContact(data){
 }
 
 function mailDelivery(env){
-  if(!env.SMTP_HOST||!env.SMTP_USER||!env.SMTP_PASSWORD||!emailPattern.test(env.CONTACT_TO||'')||!emailPattern.test(env.CONTACT_FROM||'')||env.CONTACT_DELIVERY_ENABLED!=='true')return null;
+  const destination=env.CONTACT_TO||'contact@zavku.com';
+  if(!env.SMTP_HOST||!env.SMTP_USER||!env.SMTP_PASSWORD||!emailPattern.test(destination)||!emailPattern.test(env.CONTACT_FROM||'')||env.CONTACT_DELIVERY_ENABLED!=='true')return null;
   const transport=nodemailer.createTransport({host:env.SMTP_HOST,port:Number(env.SMTP_PORT||465),secure:env.SMTP_PORT!=='587',requireTLS:true,auth:{user:env.SMTP_USER,pass:env.SMTP_PASSWORD},connectionTimeout:8000,greetingTimeout:8000,socketTimeout:12000,disableFileAccess:true,disableUrlAccess:true});
   return async(data)=>{
-    const info=await transport.sendMail({from:env.CONTACT_FROM,to:env.CONTACT_TO,replyTo:data.email,subject:'ZAVKU website inquiry',text:`Name: ${data.name}\nCompany: ${data.company}\nBusiness email: ${data.email}\n\n${data.message}`});
+    const info=await transport.sendMail({from:env.CONTACT_FROM,to:destination,replyTo:data.email,subject:`ZAVKU Website Inquiry — ${data.company}`,text:`Name: ${data.name}\nCompany: ${data.company}\nBusiness email: ${data.email}\n\n${data.message}`});
     if(!info.accepted?.length)throw new Error('Delivery not accepted');
   };
 }
