@@ -18,7 +18,7 @@ Do not create another app, repo, database, bucket or Droplet. Do not deploy this
 
 ## Contact delivery — pending
 
-No corporate destination or SMTP credentials were supplied or found in the existing app-level configuration. Delivery is explicitly disabled. Valid requests return HTTP 503 with an honest user message. Invalid submissions return 422; abuse returns 429. A success response is possible only after an SMTP server accepts the mail.
+No corporate destination or SMTP credentials were supplied or found in the existing app-level configuration. Delivery is explicitly disabled. Valid requests return HTTP 409 with an honest user message. Invalid submissions return 422; abuse returns 429. A success response is possible only after an SMTP server accepts the mail.
 
 To activate later, configure approved `CONTACT_TO`, `CONTACT_FROM`, `SMTP_HOST`, `SMTP_PORT` (465 or 587), `SMTP_USER`, `SMTP_PASSWORD` as service runtime settings, and set `CONTACT_DELIVERY_ENABLED=true`. Store secrets encrypted in hosting settings, never in Git. No mailbox or mail-provider account is created.
 
