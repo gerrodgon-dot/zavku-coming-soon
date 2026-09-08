@@ -26,7 +26,7 @@ region: atl
 static_sites:
 - environment_slug: html
   github:
-    branch: main
+    branch: block-00-institutional
     deploy_on_push: true
     repo: gerrodgon-dot/zavku-coming-soon
   name: zavku-coming-soon
@@ -37,7 +37,7 @@ static_sites:
 services:
 - name: zavku-contact
   github:
-    branch: main
+    branch: block-00-institutional
     deploy_on_push: true
     repo: gerrodgon-dot/zavku-coming-soon
   source_dir: /
